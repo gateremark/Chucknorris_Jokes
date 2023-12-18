@@ -24,11 +24,11 @@ function Categories() {
 
     return (
         <div className="flex flex-col text-center gap-6">
-            <div className=" flex w-full justify-between px-6 flex-wrap mt-6">
+            <div className=" flex w-full gap-4 px-6 flex-wrap mt-6">
                 {data.categories.map((category: string) => (
                     <button
                         key={category}
-                        className=""
+                        className=" capitalize bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded my-2 "
                         onClick={() => {
                             handleClick(category);
                         }}
