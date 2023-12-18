@@ -1,30 +1,43 @@
 import { useQuery, gql } from "@apollo/client";
+import { useState } from "react";
 
 const GET_CATEGORIES = gql`
-    query Query {
+    query Query($category: String!) {
         categories
-        randomJoke(category: "dev")
+        randomJoke(category: $category)
     }
 `;
 
 function Categories() {
-    const { loading, error, data } = useQuery(GET_CATEGORIES);
+    const [category, setCategory] = useState("dev");
+    const { loading, error, data, refetch } = useQuery(GET_CATEGORIES, {
+        variables: { category },
+    });
 
-    if (loading) return <p>Loading...</p>;
-    if (error) return <p>Error </p>;
-    console.log(data.randomJoke);
+    if (loading) return <p className="text-center mt-6">Loading...</p>;
+    if (error) return <p>Error...</p>;
+
+    const handleClick = (newCategory: string) => {
+        setCategory(newCategory);
+        refetch();
+    };
+
     return (
         <div className="flex flex-col text-center gap-6">
             <div className=" flex w-full justify-between px-6 flex-wrap mt-6">
                 {data.categories.map((category: string) => (
-                    <div key={category} className=" cursor-pointer">
+                    <button
+                        key={category}
+                        className=""
+                        onClick={() => {
+                            handleClick(category);
+                        }}
+                    >
                         {category}
-                    </div>
+                    </button>
                 ))}
             </div>
-            <div>
-                {data.randomJoke}
-            </div>
+            <div>{data.randomJoke}</div>
         </div>
     );
 }
