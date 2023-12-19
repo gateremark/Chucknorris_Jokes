@@ -15,7 +15,7 @@ function Categories() {
     });
 
     if (loading) return <p className="text-center mt-6 text-lg">Loading...</p>;
-    if (error) return <p className=" text-xl font-semibold">Error... <span className=" italic">localhost:4000 not running</span> </p>;
+    if (error) return <p className=" text-xl font-semibold ml-2 mt-2">Error... <span className=" italic">localhost:4000 not found</span> </p>;
 
     const handleClick = (newCategory: string) => {
         setCategory(newCategory);
