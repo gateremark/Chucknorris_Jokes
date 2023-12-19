@@ -37,7 +37,8 @@ function Categories() {
                     </button>
                 ))}
             </div>
-            <div>{data.randomJoke}</div>
+            <div className=" font-semibold text-2xl">~ {data.randomJoke}</div>
+
         </div>
     );
 }
