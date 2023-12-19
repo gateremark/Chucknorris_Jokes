@@ -3,7 +3,7 @@ import Categories from "./components/getAllJokes";
 
 // Set up Apollo Client
 const client = new ApolloClient({
-    uri: "http://localhost:4000",
+    uri: "https://chucknorris-87mu.onrender.com",
     cache: new InMemoryCache(),
 });
 
