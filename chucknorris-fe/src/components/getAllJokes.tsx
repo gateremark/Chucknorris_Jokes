@@ -14,8 +14,8 @@ function Categories() {
         variables: { category },
     });
 
-    if (loading) return <p className="text-center mt-6">Loading...</p>;
-    if (error) return <p>Error...</p>;
+    if (loading) return <p className="text-center mt-6 text-lg">Loading...</p>;
+    if (error) return <p className=" text-xl font-semibold">Error... <span className=" italic">localhost:4000 not running</span> </p>;
 
     const handleClick = (newCategory: string) => {
         setCategory(newCategory);
